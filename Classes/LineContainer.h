@@ -13,16 +13,34 @@
 
 USING_NS_CC;
 
+typedef enum LineType: int {
+    LINE_NONE,
+    LINE_TEMP,
+    LINE_DASHED,
+} LineType;
+
+
+
 class LineContainer : public cocos2d::Node
 {
 public:
     LineContainer();
-    ~Linecontainer();
     
 protected:
     
     
 private:
+    void reset(void);
+    
+    int _dash;
+    int _dashSpace;
+    LineType _lineType;
+    Size _screenSize;
+    float _energyLineX;
+    float _energyLineHeight;
+    
+    float _energy;
+    float _energyDecrement;
     
     
 };
