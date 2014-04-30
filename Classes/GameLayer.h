@@ -11,7 +11,7 @@ typedef enum GameState : int {
 
 typedef enum zPosition : int {
     kBackGround,
-} GameState;
+} zPosition;
 
 class GameLayer : public cocos2d::Layer
 {
