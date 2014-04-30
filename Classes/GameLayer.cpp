@@ -1,16 +1,16 @@
-#include "HelloWorldScene.h"
+#include "GameLayer.h"
 
 USING_NS_CC;
 
-Scene* HelloWorld::createScene()
+Scene* GameLayer::createScene()
 {
     auto scene = Scene::create();
-    auto layer = HelloWorld::create();
+    auto layer = GameLayer::create();
     scene->addChild(layer);
     return scene;
 }
 
-bool HelloWorld::init()
+bool GameLayer::init()
 {
     if ( !Layer::init() )
     {

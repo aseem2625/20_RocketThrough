@@ -5,14 +5,14 @@
 
 USING_NS_CC;
 
-class HelloWorld : public cocos2d::Layer
+class GameLayer : public cocos2d::Layer
 {
 public:
     static cocos2d::Scene* createScene();
-    CREATE_FUNC(HelloWorld);
+    CREATE_FUNC(GameLayer);
     virtual bool init();
     
-privete:
+private:
 };
 
 #endif // __HELLOWORLD_SCENE_H__
