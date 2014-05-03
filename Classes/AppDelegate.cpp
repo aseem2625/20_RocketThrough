@@ -26,7 +26,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // マルチディスプレイ対応
     Size screenSize = director->getWinSize();
     Size designSize = Size(768, 1024);
-    glview->setDesignResolutionSize(designSize.width, designSize.height, ResolutionPolicy::SHOW_ALL);
+    glview->setDesignResolutionSize(designSize.width, designSize.height, ResolutionPolicy::EXACT_FIT);
     
     if (screenSize.width > 768) {
         FileUtils::getInstance()->setSearchPaths({"ipadhd"});

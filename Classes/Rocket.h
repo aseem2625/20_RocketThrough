@@ -24,7 +24,7 @@ class Rocket : public GameSprite
 {
 public:
     Rocket(void);
-    Rocket *create();
+    static Rocket *create();
     
     void reset(void);
     bool isCollidedWithSides(void);

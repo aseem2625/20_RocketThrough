@@ -3,15 +3,30 @@
 
 #include "cocos2d.h"
 
+#include "LineContainer.h"
+#include "Rocket.h"
+
 USING_NS_CC;
 
 typedef enum GameState : int {
     kGameIntro,
+    kGamePlay,
+    kGamePaused,
+    kGameOver,
 } GameState;
 
 typedef enum zPosition : int {
-    kBackGround,
+    kBackground,
+    kMiddleground,
+    kForeground,
 } zPosition;
+
+typedef enum SpriteKind : int {
+    kSpriteRocket,
+    kSpritePlanet,
+    kSpriteBoost,
+    kSpriteStar
+} SpriteKind;
 
 class GameLayer : public cocos2d::Layer
 {
@@ -31,10 +46,24 @@ private:
     void createParticles(void);
     void createStarGrid(void);
     
+    GameSprite *_pauseBtn;
+    Sprite * _intro;
+    Sprite *_gameOver;
+    Sprite *_paused;
+    Label *_scoreDisplay;
+    GameSprite *_pauseButton;
+    
+    SpriteBatchNode *_gameBatchNode;
+    Rocket *_rocket;
+    Vector<GameSprite *> _planets;
+    
+    LineContainer *_lineContainer;
+    
     Size _screenSize;
+    GameState _state;
+    bool _playing;
     bool _drawing;
     float _minimumLineLength;
-    GameState _state;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

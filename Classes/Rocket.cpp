@@ -63,7 +63,6 @@ bool Rocket::isCollidedWithSides()
         _vector =  Point(this->getVector().x * -1, this->getVector().y);
         this->setRotationFromVector();
         return true;
-        
     }
     
     if (_position.y < _radius) {
