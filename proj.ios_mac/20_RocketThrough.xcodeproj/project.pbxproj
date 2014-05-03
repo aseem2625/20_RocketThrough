@@ -74,6 +74,7 @@
 		F4786A8419108AA50062271C /* iphone in Resources */ = {isa = PBXBuildFile; fileRef = F4786A8019108AA50062271C /* iphone */; };
 		F4786A8519108AA50062271C /* iphonehd in Resources */ = {isa = PBXBuildFile; fileRef = F4786A8119108AA50062271C /* iphonehd */; };
 		F4922F1519148284005CB76C /* GameSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4922F1319148284005CB76C /* GameSprite.cpp */; };
+		F4922F1A1914AEB1005CB76C /* Rocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4922F181914AEB1005CB76C /* Rocket.cpp */; };
 		F4B577C31910BE1E00B0D211 /* LineContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4B577C11910BE1E00B0D211 /* LineContainer.cpp */; };
 /* End PBXBuildFile section */
 
@@ -279,6 +280,8 @@
 		F4786A8119108AA50062271C /* iphonehd */ = {isa = PBXFileReference; lastKnownFileType = folder; path = iphonehd; sourceTree = "<group>"; };
 		F4922F1319148284005CB76C /* GameSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameSprite.cpp; path = ../Classes/GameSprite.cpp; sourceTree = "<group>"; };
 		F4922F1419148284005CB76C /* GameSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameSprite.h; path = ../Classes/GameSprite.h; sourceTree = "<group>"; };
+		F4922F181914AEB1005CB76C /* Rocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Rocket.cpp; path = ../Classes/Rocket.cpp; sourceTree = "<group>"; };
+		F4922F191914AEB1005CB76C /* Rocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rocket.h; path = ../Classes/Rocket.h; sourceTree = "<group>"; };
 		F4B577C11910BE1E00B0D211 /* LineContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LineContainer.cpp; path = ../Classes/LineContainer.cpp; sourceTree = "<group>"; };
 		F4B577C21910BE1E00B0D211 /* LineContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LineContainer.h; path = ../Classes/LineContainer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -358,6 +361,8 @@
 				F4B577C21910BE1E00B0D211 /* LineContainer.h */,
 				F4922F1319148284005CB76C /* GameSprite.cpp */,
 				F4922F1419148284005CB76C /* GameSprite.h */,
+				F4922F181914AEB1005CB76C /* Rocket.cpp */,
+				F4922F191914AEB1005CB76C /* Rocket.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -696,6 +701,7 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				F4B577C31910BE1E00B0D211 /* LineContainer.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				F4922F1A1914AEB1005CB76C /* Rocket.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				F4922F1519148284005CB76C /* GameSprite.cpp in Sources */,
