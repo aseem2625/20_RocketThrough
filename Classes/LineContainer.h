@@ -25,6 +25,12 @@ class LineContainer : public cocos2d::Node
 {
 public:
     LineContainer();
+    static LineContainer *create();
+    
+    virtual void update(float delta);
+    virtual void draw(Renderer *renderer, const kmMat4& transform, bool transformUpdated);
+    
+    void setEnergyDecrement(float energyDecrement);
     
 protected:
     
