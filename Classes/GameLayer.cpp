@@ -66,17 +66,17 @@ void GameLayer::update(float dt)
     
 }
 
-void onTouchesBegan(const std::vector<Touch*>& touches, Event *unused_event)
+void GameLayer::onTouchesBegan(const std::vector<Touch*>& touches, Event *unused_event)
 {
     
 }
 
-void onTouchesMoved(const std::vector<Touch*>& touches, Event *unused_event)
+void GameLayer::onTouchesMoved(const std::vector<Touch*>& touches, Event *unused_event)
 {
     
 }
 
-void onTouchesEnded(const std::vector<Touch*>& touches, Event *unused_event)
+void GameLayer::onTouchesEnded(const std::vector<Touch*>& touches, Event *unused_event)
 {
     
 }
