@@ -66,9 +66,9 @@ void GameLayer::createGameScreen(void)
     GameSprite *planet;
     std::ostringstream spriteFramename;
     float planetPosition[7][2] = {{.25, .8}, {.8, .45}, {.75, .8}, {.5, .5}, {.18, .45}, {.8, .15}, {.18, .1}};
-    for (int i = 1; i <= 7; i++) {
+    for (int i = 0; i < 7; i++) {
         spriteFramename.str("");
-        spriteFramename << "planet_" << i << ".png";
+        spriteFramename << "planet_" << i + 1 << ".png";
         planet = GameSprite::createWithSpriteFrameName(spriteFramename.str());
         planet->setPosition(Point(_screenSize.width * planetPosition[i][0],
                                   _screenSize.height * planetPosition[i][1]));

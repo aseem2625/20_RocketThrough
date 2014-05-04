@@ -40,7 +40,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
         FileUtils::getInstance()->setSearchPaths({"iphone"});
     }
     director->setContentScaleFactor(screenSize.height / designSize.height);
-    CCLOG("design height %f, screen height %f", screenSize.height, designSize.height);
     
     // BGMプリロード
     SimpleAudioEngine::getInstance()->preloadBackgroundMusic("background.mp3");
