@@ -46,6 +46,8 @@ private:
     void createParticles(void);
     void createStarGrid(void);
     
+    std::vector<Point> _grid;
+    
     GameSprite *_pauseBtn;
     Sprite * _intro;
     Sprite *_gameOver;

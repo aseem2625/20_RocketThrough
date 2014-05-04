@@ -121,7 +121,30 @@ void GameLayer::createParticles(void)
 
 void GameLayer::createStarGrid(void)
 {
+    //create grid
+    float gridFrame = _screenSize.width * 0.1f;
+    int tile = 32;
+    int rows = (_screenSize.height - 4 * gridFrame)/tile;
+    int cols = (_screenSize.width  - 2 * gridFrame)/tile;
     
+    long count = _planets.size();
+    GameSprite * planet;
+    Point cell;
+    bool overlaps;
+    for (int r = 0; r < rows; r++) {
+        for (int c = 0; c < cols; c++) {
+            cell = Point(gridFrame + c * tile, 2 * gridFrame + r * tile);
+            overlaps = false;
+            for (int j = 0; j < count; j++) {
+                planet = (GameSprite *) _planets.at(j);
+                if (pow(planet->getPositionX() - cell.x, 2) + pow(planet->getPositionY() - cell.y, 2) <= pow(planet->getRadius() * 1.2f, 2)) {
+                    overlaps = true;
+                }
+            }
+            if (!overlaps) _grid.push_back(cell);
+        }
+    }
+    CCLOG("POSSIBLE STARS: %lu", _grid.size());
 }
 
 void GameLayer::update(float dt)
@@ -167,13 +190,6 @@ void GameLayer::onTouchesEnded(const std::vector<Touch*>& touches, Event *unused
     }
     
     if (!_playing) return;
-    
-    
-    
-    
-    
-    
-    
     
     
 }
