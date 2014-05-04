@@ -61,6 +61,13 @@ private:
     
     LineContainer *_lineContainer;
     
+    ParticleSystem *_star;
+    ParticleSystem *_jet;
+    ParticleSystem *_boom;
+    ParticleSystem *_comet;
+    ParticleSystem *_pickup;
+    ParticleSystem *_warp;
+    
     Size _screenSize;
     GameState _state;
     bool _playing;
