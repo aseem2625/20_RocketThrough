@@ -32,6 +32,10 @@ public:
     
     void setEnergyDecrement(float energyDecrement);
     
+    CC_SYNTHESIZE(Point, _pivot, Pivot);
+	CC_SYNTHESIZE(Point, _tip, Tip);
+    CC_SYNTHESIZE(float, _lineLentgh, LineLength);
+    
 protected:
     
     
@@ -43,7 +47,7 @@ private:
     LineType _lineType;
     Size _screenSize;
     float _energyLineX;
-    float _energyLineHeight;
+    float _energyHeight;
     
     float _energy;
     float _energyDecrement;

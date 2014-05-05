@@ -50,7 +50,7 @@ void GameLayer::createGameScreen(void)
     
     // Line Container
     _lineContainer = LineContainer::create();
-    this->addChild(_lineContainer);
+    this->addChild(_lineContainer, kBackground);
     
     // 画像シートをキャッシュに登録
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("sprite_sheet.plist");
