@@ -45,6 +45,15 @@ Rocket *Rocket::create()
     return NULL;
 }
 
+void Rocket::select(bool flag)
+{
+    if (flag) {
+        this->setSpriteFrame("rocket_on.png");
+    } else {
+        this->setSpriteFrame("rocket.png");
+    }
+}
+
 bool Rocket::isCollidedWithSides()
 {
     Size screenSize = CCDirector::getInstance()->getWinSize();

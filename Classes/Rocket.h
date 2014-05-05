@@ -28,6 +28,7 @@ public:
     
     void reset(void);
     bool isCollidedWithSides(void);
+    void select(bool flag);
     
     inline void setTargetRotation(float value) {
         _targetRotation = value;
