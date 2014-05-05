@@ -182,7 +182,20 @@ void GameLayer::update(float dt)
 
 void GameLayer::onTouchesBegan(const std::vector<Touch*>& touches, Event *unused_event)
 {
+    if (!_playing) return;
     
+    Touch *touch = touches.at(0);
+    if (touch) {
+        Point tap = touch->getLocation();
+        
+        // track if tapping on ship
+        if (_rocket->getPosition().getDistance(tap) < _rocket->getRadius() * 1.2) {
+            // clear lines
+            _lineContainer->setLineLength(LINE_NONE);
+            _rocket->setRotationOrientation(RotationOrientation::NONE);
+            _drawing = true;
+        }
+    }
 }
 
 void GameLayer::onTouchesMoved(const std::vector<Touch*>& touches, Event *unused_event)
