@@ -26,6 +26,7 @@ public:
     Rocket(void);
     static Rocket *create();
     
+    void update(float dt);
     void reset(void);
     bool isCollidedWithSides(void);
     void select(bool flag);
@@ -41,6 +42,7 @@ public:
     CC_SYNTHESIZE(Point, _vector, Vector);
     CC_SYNTHESIZE(Point, _pivot, Pivot);
     CC_SYNTHESIZE(float, _speed, Speed);
+    CC_SYNTHESIZE(float, _angularSpeed, AngularSpeed);
     CC_SYNTHESIZE(RotationOrientation, _rotationOrientation, RotationOrientation);
     
 protected:

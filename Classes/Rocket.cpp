@@ -54,6 +54,55 @@ void Rocket::select(bool flag)
     }
 }
 
+void Rocket::update(float dt)
+{
+    Point position = this->getPosition();
+    
+    if (_rotationOrientation == RotationOrientation::NONE) {
+        position += _vector * dt;
+        
+    } else {
+        // rotate point around a pivot by a certain amount
+        Point rotatedPoint = position.rotateByAngle(_pivot, _angularSpeed * dt);
+        position = rotatedPoint;
+        
+        float rotatedAngle = 0;
+        Point clockwise = (position + _pivot).getRPerp();
+        
+        if (_rotationOrientation == RotationOrientation::COUNTER_CLOCKWIZE) {
+            rotatedAngle = atan2(-clockwise.y, -clockwise.x);
+        } else {
+            rotatedAngle = atan2(clockwise.y, clockwise.x);
+        }
+        
+        // update rocket vector
+        _vector.x = cos(rotatedAngle);
+        _vector.y = sin(rotatedAngle);
+        
+        this->setRotationFromVector();
+        
+        if (this->getRotation() > 0) {
+            this->setRotation(fmodf(this->getRotation(), 360.0));
+        } else {
+            this->setRotation(fmodf(this->getRotation(), -360.0));
+        }
+    }
+    
+    if (_targetRotation > this->getRotation() + 180) {
+        _targetRotation -= 360;
+    }
+    if (_targetRotation < this->getRotation() - 180) {
+        _targetRotation += 360;
+    }
+    
+    this->setPosition(position);
+    
+    _dr = _targetRotation - this->getRotation();
+    _ar = _dr * _rotationSpring;
+    _vr += _ar;
+    this->setRotation(this->getRotation() + _vr);
+}
+
 bool Rocket::isCollidedWithSides()
 {
     Size screenSize = CCDirector::getInstance()->getWinSize();
