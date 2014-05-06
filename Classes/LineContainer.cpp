@@ -47,6 +47,7 @@ LineContainer *LineContainer::create()
 
 void LineContainer::update(float delta)
 {
+    CCLOG("energy %f", _energy);
     _energy -= _energyDecrement * delta;
     if (_energy < 0) _energy = 0;
 }
@@ -92,6 +93,6 @@ void LineContainer::draw(Renderer *renderer, const kmMat4 &transform, bool trans
 void LineContainer::setEnergyDecrement(float energyDecrement)
 {
     _energyDecrement += energyDecrement;
-    if (_energyDecrement > .07) _energyDecrement = .70;
+    if (_energyDecrement > .07) _energyDecrement = .07;
 }
 

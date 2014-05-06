@@ -230,7 +230,7 @@ void GameLayer::update(float dt)
     
     // update line container
     _lineContainer->update(dt);
-    _rocket->setOpacity(_lineContainer->getEnergy());
+    _rocket->setOpacity(_lineContainer->getEnergy() * 255);
     
     // collision with planets
     for (GameSprite *planet : _planets) {
