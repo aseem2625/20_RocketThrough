@@ -265,6 +265,12 @@ void GameLayer::update(float dt)
         
         _timeBetweenPickups = 0;
     }
+    
+    // check energy level
+    _timeBetweenPickups += dt;
+    if (_lineContainer->getEnergy() <= 0) {
+        if (_rocket->isVisible()) this->killPlayer();
+    }
 }
 
 void GameLayer::killPlayer()
