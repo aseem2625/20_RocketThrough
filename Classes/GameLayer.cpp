@@ -231,6 +231,40 @@ void GameLayer::update(float dt)
     // update line container
     _lineContainer->update(dt);
     _rocket->setOpacity(_lineContainer->getEnergy());
+    
+    // collision with planets
+    for (GameSprite *planet : _planets) {
+        if (planet->getPosition().getDistance(_rocket->getPosition()) < _rocket->getRadius() * .8 + planet->getRadius() * .65) {
+            if (_rocket->isVisible()) this->killPlayer();
+            break;
+        }
+    }
+    
+    // collision with star
+    if (_star->getPosition().getDistance(_rocket->getPosition()) < _rocket->getRadius() * 1.2) {
+        _pickup->setPosition(_star->getPosition());
+        _pickup->resetSystem();
+        if (_lineContainer->getEnergy() < .75) {
+            _lineContainer->setEnergy(_lineContainer->getEnergy() + .25);
+        } else {
+            _lineContainer->setEnergy(1);
+        }
+        _rocket->setSpeed(_rocket->getSpeed() + 2);
+        if (_rocket->getSpeed() > 70) _rocket->setSpeed(70);
+        _lineContainer->setEnergyDecrement(.0002);
+        SimpleAudioEngine::getInstance()->playEffect("pickup.wav");
+        resetStar();
+        
+        int points = 100 - _timeBetweenPickups;
+        if (points < 0) points = 0;
+        
+        _score += points;
+        std::ostringstream scoreString;
+        scoreString << _score;
+        _scoreDisplay->setString(scoreString.str());
+        
+        _timeBetweenPickups = 0;
+    }
 }
 
 void GameLayer::killPlayer()
