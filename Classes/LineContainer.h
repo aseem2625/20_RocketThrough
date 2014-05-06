@@ -31,20 +31,20 @@ public:
     virtual void draw(Renderer *renderer, const kmMat4& transform, bool transformUpdated);
     
     void setEnergyDecrement(float energyDecrement);
+    void reset(void);
     
     CC_SYNTHESIZE(Point, _pivot, Pivot);
 	CC_SYNTHESIZE(Point, _tip, Tip);
     CC_SYNTHESIZE(float, _lineLentgh, LineLength);
+    CC_SYNTHESIZE(LineType, _lineType, LineType);
     
 protected:
     
     
 private:
-    void reset(void);
     
     int _dash;
     int _dashSpace;
-    LineType _lineType;
     Size _screenSize;
     float _energyLineX;
     float _energyHeight;

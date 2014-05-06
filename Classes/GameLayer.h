@@ -46,7 +46,11 @@ private:
     void createParticles(void);
     void createStarGrid(void);
     
+    void resetGame(void);
+    void resetStar(void);
+    
     std::vector<Point> _grid;
+    int _gridIndex;
     
     GameSprite *_pauseBtn;
     Sprite * _intro;
@@ -72,7 +76,13 @@ private:
     GameState _state;
     bool _playing;
     bool _drawing;
+    
+    int _score;
     float _minimumLineLength;
+    float _cometInterval;
+    float _cometTimer;
+    float _timeBetweenPickups;
+
 };
 
 #endif // __HELLOWORLD_SCENE_H__

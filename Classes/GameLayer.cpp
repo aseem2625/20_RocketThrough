@@ -1,6 +1,9 @@
 #include "GameLayer.h"
 
+#include "SimpleAudioEngine.h"
+
 USING_NS_CC;
+using namespace CocosDenshion;
 
 Scene* GameLayer::createScene()
 {
@@ -180,27 +183,79 @@ void GameLayer::update(float dt)
     
 }
 
+void GameLayer::resetGame () {
+    
+    _rocket->setPosition(_screenSize.width * 0.5f, _screenSize.height * 0.1f);
+    _rocket->setOpacity(255);
+    _rocket->setVisible(true);
+    _rocket->reset();
+    
+    _cometInterval = 4;
+    _cometTimer = 0;
+    _timeBetweenPickups = 0.0;
+    
+    _score = 0;
+    char szValue[100] = {0};
+    sprintf(szValue, "%i", _score);
+    _scoreDisplay->setString(szValue);
+    
+    _lineContainer->reset();
+    
+    //shuffle grid cells
+    std::random_shuffle(_grid.begin(), _grid.end());
+    _gridIndex = 0;
+    
+    resetStar();
+    
+    _warp->stopSystem();
+    
+    _running = true;
+    
+    SimpleAudioEngine::getInstance()->playBackgroundMusic("background.mp3", true);
+    SimpleAudioEngine::getInstance()->stopAllEffects();
+    SimpleAudioEngine::getInstance()->playEffect("rocket.wav", true);
+}
+
+void GameLayer::resetStar()
+{
+    
+}
+
 void GameLayer::onTouchesBegan(const std::vector<Touch*>& touches, Event *unused_event)
 {
     if (!_playing) return;
     
     Touch *touch = touches.at(0);
-    if (touch) {
-        Point tap = touch->getLocation();
-        
-        // track if tapping on ship
-        if (_rocket->getPosition().getDistance(tap) < _rocket->getRadius() * 1.2) {
-            // clear lines
-            _lineContainer->setLineLength(LINE_NONE);
-            _rocket->setRotationOrientation(RotationOrientation::NONE);
-            _drawing = true;
-        }
+    if (!touch) return;
+    
+    Point tap = touch->getLocation();
+    
+    // track if tapping on ship
+    if (_rocket->getPosition().getDistance(tap) < _rocket->getRadius() * 1.2) {
+        // clear lines
+        _lineContainer->setLineLength(LINE_NONE);
+        _rocket->setRotationOrientation(RotationOrientation::NONE);
+        _drawing = true;
     }
 }
 
 void GameLayer::onTouchesMoved(const std::vector<Touch*>& touches, Event *unused_event)
 {
+    if (!_playing) return;
+    if (!_drawing) return;
     
+    Touch *touch = touches.at(0);
+    if (!touch) return;
+    
+    Point tap = touch->getLocation();
+    if (_rocket->getPosition().getDistance(tap) > _minimumLineLength) {
+        _rocket->select(true);
+        _lineContainer->setPivot(tap);
+        _lineContainer->setLineType(LINE_TEMP);
+    } else {
+        _rocket->select(false);
+        _lineContainer->setLineType(LINE_NONE);
+    }
 }
 
 void GameLayer::onTouchesEnded(const std::vector<Touch*>& touches, Event *unused_event)
@@ -210,7 +265,7 @@ void GameLayer::onTouchesEnded(const std::vector<Touch*>& touches, Event *unused
         _intro->setVisible(false);
         _pauseBtn->setVisible(true);
         _state = kGamePlay;
-        //resetGame();
+        resetGame();
         return;
         
     } else if (_state == kGameOver) {
@@ -218,7 +273,7 @@ void GameLayer::onTouchesEnded(const std::vector<Touch*>& touches, Event *unused
         _gameOver->setVisible(false);
         _pauseBtn->setVisible(true);
         _state = kGamePlay;
-        //resetGame();
+        resetGame();
         return;
         
     } else if (_state == kGamePaused) {

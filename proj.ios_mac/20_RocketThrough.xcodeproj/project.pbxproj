@@ -69,6 +69,10 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
+		F42D975F19189079001D6FFD /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F42D975B19189079001D6FFD /* background.mp3 */; };
+		F42D976019189079001D6FFD /* pickup.wav in Resources */ = {isa = PBXBuildFile; fileRef = F42D975C19189079001D6FFD /* pickup.wav */; };
+		F42D976119189079001D6FFD /* rocket.wav in Resources */ = {isa = PBXBuildFile; fileRef = F42D975D19189079001D6FFD /* rocket.wav */; };
+		F42D976219189079001D6FFD /* shipBoom.wav in Resources */ = {isa = PBXBuildFile; fileRef = F42D975E19189079001D6FFD /* shipBoom.wav */; };
 		F4786A8219108AA50062271C /* ipad in Resources */ = {isa = PBXBuildFile; fileRef = F4786A7E19108AA50062271C /* ipad */; };
 		F4786A8319108AA50062271C /* ipadhd in Resources */ = {isa = PBXBuildFile; fileRef = F4786A7F19108AA50062271C /* ipadhd */; };
 		F4786A8419108AA50062271C /* iphone in Resources */ = {isa = PBXBuildFile; fileRef = F4786A8019108AA50062271C /* iphone */; };
@@ -274,6 +278,10 @@
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		F42D975B19189079001D6FFD /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
+		F42D975C19189079001D6FFD /* pickup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pickup.wav; sourceTree = "<group>"; };
+		F42D975D19189079001D6FFD /* rocket.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rocket.wav; sourceTree = "<group>"; };
+		F42D975E19189079001D6FFD /* shipBoom.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shipBoom.wav; sourceTree = "<group>"; };
 		F4786A7E19108AA50062271C /* ipad */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ipad; sourceTree = "<group>"; };
 		F4786A7F19108AA50062271C /* ipadhd */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ipadhd; sourceTree = "<group>"; };
 		F4786A8019108AA50062271C /* iphone */ = {isa = PBXFileReference; lastKnownFileType = folder; path = iphone; sourceTree = "<group>"; };
@@ -481,6 +489,10 @@
 				1AFAF8B916D35E4900DB1158 /* CloseNormal.png */,
 				1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */,
 				1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */,
+				F42D975B19189079001D6FFD /* background.mp3 */,
+				F42D975C19189079001D6FFD /* pickup.wav */,
+				F42D975D19189079001D6FFD /* rocket.wav */,
+				F42D975E19189079001D6FFD /* shipBoom.wav */,
 				F4786A7E19108AA50062271C /* ipad */,
 				F4786A7F19108AA50062271C /* ipadhd */,
 				F4786A8019108AA50062271C /* iphone */,
@@ -658,9 +670,12 @@
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
+				F42D975F19189079001D6FFD /* background.mp3 in Resources */,
+				F42D976019189079001D6FFD /* pickup.wav in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
+				F42D976219189079001D6FFD /* shipBoom.wav in Resources */,
 				F4786A8519108AA50062271C /* iphonehd in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
@@ -670,6 +685,7 @@
 				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
+				F42D976119189079001D6FFD /* rocket.wav in Resources */,
 				F4786A8219108AA50062271C /* ipad in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
