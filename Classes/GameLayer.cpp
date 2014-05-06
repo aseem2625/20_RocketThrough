@@ -286,6 +286,42 @@ void GameLayer::onTouchesEnded(const std::vector<Touch*>& touches, Event *unused
     }
     
     if (!_playing) return;
+    Touch *touch = touches.at(0);
+    if (!touch) return;
+    Point tap = touch->getLocation();
     
+    if (_pauseBtn->getBoundingBox().containsPoint(tap)) {
+        _paused->setVisible(true);
+        _state = kGamePaused;
+        _pauseBtn->setSpriteFrame("btn_pause_on.png");
+        _playing = false;
+        return;
+    }
     
+    _drawing = false;
+    _rocket->select(false);
+    
+    // if we are showing a temp line
+    if (_lineContainer->getLineType() == LINE_TEMP) {
+        _lineContainer->setPivot(tap);
+        _lineContainer->setLineLength(_rocket->getPosition().getDistance(tap));
+        // set up rocket
+        _rocket->setPivot(tap);
+        
+        float circle_length = _lineContainer->getLineLength() * 2 * M_PI;
+        int iterations = floor(circle_length / _rocket->getSpeed());
+        _rocket->setAngularSpeed(2 * M_PI / iterations);
+        
+        Point clockwise = (_rocket->getPosition() + _rocket->getPivot()).getRPerp();
+        float dot = clockwise.dot(_rocket->getVector());
+        if (dot > 0) {
+            _rocket->setAngularSpeed(_rocket->getAngularSpeed() * -1);
+            _rocket->setRotationOrientation(RotationOrientation::CLOCKWIZE);
+            _rocket->setTargetRotation(CC_RADIANS_TO_DEGREES(atan2(clockwise.y, clockwise.x)));
+        } else {
+            _rocket->setRotationOrientation(RotationOrientation::COUNTER_CLOCKWIZE);
+            _rocket->setTargetRotation(CC_RADIANS_TO_DEGREES(atan2(-clockwise.y, -clockwise.x)));
+        }
+        _lineContainer->setLineType(LINE_DASHED);
+    }
 }
