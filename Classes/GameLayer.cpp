@@ -275,7 +275,21 @@ void GameLayer::update(float dt)
 
 void GameLayer::killPlayer()
 {
+    SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+    SimpleAudioEngine::getInstance()->stopAllEffects();
+    SimpleAudioEngine::getInstance()->playEffect("shipBoom.wav");
     
+    // update our particle systems, _boom and _jet
+    _boom->setPosition(_rocket->getPosition());
+    _boom->resetSystem();
+    _rocket->setVisible(false);
+    _jet->stopSystem();
+    _lineContainer->setLineType(LINE_NONE);
+    
+    _playing = false;
+    _state = kGameOver;
+    _gameOver->setVisible(true);
+    _pauseBtn->setVisible(false);
 }
 
 void GameLayer::resetGame () {
