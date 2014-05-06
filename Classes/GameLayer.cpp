@@ -318,7 +318,7 @@ void GameLayer::resetGame () {
     
     _warp->stopSystem();
     
-    _running = true;
+    _playing = true;
     
     SimpleAudioEngine::getInstance()->playBackgroundMusic("background.mp3", true);
     SimpleAudioEngine::getInstance()->stopAllEffects();
@@ -396,7 +396,7 @@ void GameLayer::onTouchesEnded(const std::vector<Touch*>& touches, Event *unused
         _pauseBtn->setDisplayFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("btn_pause_off.png"));
         _paused->setVisible(false);
         _state = kGamePlay;
-        _running = true;
+        _playing = true;
         return;
     }
     
