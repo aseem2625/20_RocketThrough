@@ -327,7 +327,13 @@ void GameLayer::resetGame () {
 
 void GameLayer::resetStar()
 {
-    
+    Point position = _grid[_gridIndex];
+    _gridIndex++;
+    if (_gridIndex >= _grid.size()) _gridIndex = 0;
+    // reset star particle
+    _star->setPosition(position);
+    _star->setVisible(true);
+    _star->resetSystem();
 }
 
 void GameLayer::onTouchesBegan(const std::vector<Touch*>& touches, Event *unused_event)
