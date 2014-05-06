@@ -227,6 +227,15 @@ void GameLayer::update(float dt)
             _comet->setVisible(false);
         }
     }
+    
+    // update line container
+    _lineContainer->update(dt);
+    _rocket->setOpacity(_lineContainer->getEnergy());
+}
+
+void GameLayer::killPlayer()
+{
+    
 }
 
 void GameLayer::resetGame () {

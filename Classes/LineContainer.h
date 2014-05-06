@@ -33,6 +33,7 @@ public:
     void setEnergyDecrement(float energyDecrement);
     void reset(void);
     
+    CC_SYNTHESIZE(float, _energy, Energy);
     CC_SYNTHESIZE(Point, _pivot, Pivot);
 	CC_SYNTHESIZE(Point, _tip, Tip);
     CC_SYNTHESIZE(float, _lineLentgh, LineLength);
@@ -49,7 +50,6 @@ private:
     float _energyLineX;
     float _energyHeight;
     
-    float _energy;
     float _energyDecrement;
     
     
