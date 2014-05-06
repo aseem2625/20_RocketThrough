@@ -48,6 +48,7 @@ private:
     
     void resetGame(void);
     void resetStar(void);
+    void killPlayer(void);
     
     std::vector<Point> _grid;
     int _gridIndex;

@@ -180,7 +180,53 @@ void GameLayer::createStarGrid(void)
 
 void GameLayer::update(float dt)
 {
+    if (!_playing) return;
     
+    if (_lineContainer->getLineType() != LINE_NONE) {
+        _lineContainer->setTip(_rocket->getPosition());
+    }
+    
+    // track collision with sides
+    if (_rocket->isCollidedWithSides()) {
+        _lineContainer->setLineType(LINE_NONE);
+    }
+    
+    _rocket->update(dt);
+    
+    // update jet particle so ti follows rocket
+    if (!_jet->isActive()) _jet->resetSystem();
+    _jet->setRotation(_rocket->getRotation());
+    _jet->setPosition(_rocket->getPosition());
+    
+    // update _comet
+    _cometTimer += dt;
+    float newY;
+    
+    if (_cometTimer > _cometInterval) {
+        _cometTimer = 0;
+        if (!_comet->isVisible()) {
+            _comet->setPositionX(0);
+            newY = _screenSize.height * .2 +  (float)rand() / ((float)RAND_MAX / _screenSize.height * .6);
+            if (newY > _screenSize.height * .9) {
+                newY = _screenSize.height * .9;
+            }
+            _comet->setPositionY(newY);
+            _comet->setVisible(true);
+            _comet->resetSystem();
+        }
+    }
+    
+    if (_comet->isVisible()) {
+        // collision with commet
+        if (_rocket->getPosition().getDistance(_comet->getPosition()) < _rocket->getRadius()) {
+            if (_rocket->isVisible()) this->killPlayer();
+        }
+        _comet->setPositionX(_comet->getPositionX() + 50 * dt);
+        if (_comet->getPositionX() > _screenSize.width * 1.5) {
+            _comet->stopSystem();
+            _comet->setVisible(false);
+        }
+    }
 }
 
 void GameLayer::resetGame () {
