@@ -58,7 +58,7 @@ void LineContainer::draw(Renderer *renderer, const kmMat4 &transform, bool trans
             break;
             
         case LINE_TEMP:
-            drawSegment(_tip, _pivot, 8, Color4F::WHITE);
+            drawSegment(_tip, _pivot, 3, Color4F::WHITE);
             drawDot(_pivot, 10, Color4F::WHITE);
             break;
             
