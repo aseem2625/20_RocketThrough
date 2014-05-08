@@ -82,7 +82,6 @@ void LineContainer::draw(Renderer *renderer, const kmMat4 &transform, bool trans
     // draw engergy bar
     drawSegment(Point(_energyLineX, _screenSize.height * .1), Point(_energyLineX, _screenSize.height * .9), 8, Color4F::BLACK);
     drawSegment(Point(_energyLineX, _screenSize.height * .1), Point(_energyLineX, _screenSize.height * .1 + _energy * _energyHeight), 8, Color4F::ORANGE);
-    CCLOG("%f * %f = %f", _energy, _energyHeight, _energy * _energyHeight);
     
     this->DrawNode::draw(renderer, transform, transformUpdated);
 }
