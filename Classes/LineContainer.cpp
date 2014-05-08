@@ -21,9 +21,6 @@ LineContainer::LineContainer()
     _energyLineX = _screenSize.width * .98;
     _energyHeight = _screenSize.height * .8;
     
-    // GL 描画する線の長さを設定
-    glLineWidth(8 * CC_CONTENT_SCALE_FACTOR());
-    
     // リセット
     this->reset();
 }
@@ -37,7 +34,7 @@ void LineContainer::reset()
 LineContainer *LineContainer::create()
 {
     LineContainer *lineContainer = new LineContainer();
-    if (lineContainer) {
+    if ( lineContainer && lineContainer->DrawNode::init() ) {
         lineContainer->autorelease();
         return lineContainer;
     }
@@ -60,14 +57,12 @@ void LineContainer::draw(Renderer *renderer, const kmMat4 &transform, bool trans
             break;
             
         case LINE_TEMP:
-            setDrawColor4F(1, 1, 1, 1);
-            drawLine(_tip, _pivot);
-            drawCircle(_pivot, 10, 360, 10, false);
+            drawSegment(_tip, _pivot, 8, Color4F::WHITE);
+            drawDot(_pivot, 10, Color4F::WHITE);
             break;
             
         case LINE_DASHED:
-            setDrawColor4F(1, 1, 1, 1);
-            drawCircle(_pivot, 10, 180, 10, false);
+            drawDot(_pivot, 10, Color4F::WHITE);
             
             int segments = _lineLentgh / (_dash + _dashSpace);
             float t = 0;
@@ -76,7 +71,7 @@ void LineContainer::draw(Renderer *renderer, const kmMat4 &transform, bool trans
                 x_ = _pivot.x + t * (_tip.x - _pivot.x);
                 y_ = _pivot.y + t * (_tip.y - _pivot.y);
                 
-                drawCircle(Point(x_, y_), 4, M_PI, 6, false);
+                drawDot(Point(x_, y_), 4, Color4F::WHITE);
                 
                 t += (float)1 / segments;
             }
@@ -84,10 +79,10 @@ void LineContainer::draw(Renderer *renderer, const kmMat4 &transform, bool trans
     }
     
     // draw engergy bar
-    setDrawColor4F(0, 0, 0, 1);
-    drawLine(Point(_energyLineX, _screenSize.height * .1), Point(_energyLineX, _screenSize.height * .9));
-    setDrawColor4F(1, .5, 1, 1);
-    drawLine(Point(_energyLineX, _screenSize.height * .1), Point(_energyLineX, _screenSize.height * 1 + _energy * _energyHeight));
+    drawSegment(Point(_energyLineX, _screenSize.height * .1), Point(_energyLineX, _screenSize.height * .9), 8, Color4F::BLACK);
+    drawSegment(Point(_energyLineX, _screenSize.height * .1), Point(_energyLineX, _screenSize.height * 1 + _energy * _energyHeight), 8, Color4F::ORANGE);
+
+    this->DrawNode::draw(renderer, transform, transformUpdated);
 }
 
 void LineContainer::setEnergyDecrement(float energyDecrement)

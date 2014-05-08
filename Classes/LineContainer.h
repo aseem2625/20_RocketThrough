@@ -21,7 +21,7 @@ typedef enum LineType: int {
 
 
 
-class LineContainer : public cocos2d::Node
+class LineContainer : public cocos2d::DrawNode
 {
 public:
     LineContainer();
