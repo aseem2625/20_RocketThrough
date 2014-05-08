@@ -427,8 +427,9 @@ void GameLayer::onTouchesEnded(const std::vector<Touch*>& touches, Event *unused
         int iterations = floor(circle_length / _rocket->getSpeed());
         _rocket->setAngularSpeed(2 * M_PI / iterations);
         
-        Point clockwise = (_rocket->getPosition() + _rocket->getPivot()).getRPerp();
+        Point clockwise = (_rocket->getPosition() - _rocket->getPivot()).getRPerp();
         float dot = clockwise.dot(_rocket->getVector());
+        CCLOG("%f", dot);
         if (dot > 0) {
             _rocket->setAngularSpeed(_rocket->getAngularSpeed() * -1);
             _rocket->setRotationOrientation(RotationOrientation::CLOCKWIZE);
