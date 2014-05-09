@@ -65,7 +65,7 @@ void Rocket::update(float dt)
         // rotate point around a pivot by a certain amount
         Point rotatedPoint = position.rotateByAngle(_pivot, _angularSpeed * dt);
         position = rotatedPoint;
-        CCLOG("%f %f", rotatedPoint.x, rotatedPoint.y);
+        
         float rotatedAngle = 0;
         Point clockwise = (position - _pivot).getRPerp();
         
@@ -80,7 +80,7 @@ void Rocket::update(float dt)
         _vector.y = _speed * sin(rotatedAngle);
         
         this->setRotationFromVector();
-        CCLOG("%f %f", _vector.x, _vector.y);
+        
         if (this->getRotation() > 0) {
             this->setRotation(fmodf(this->getRotation(), 360.0));
         } else {

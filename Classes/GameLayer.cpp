@@ -175,7 +175,7 @@ void GameLayer::createStarGrid(void)
             if (!overlaps) _grid.push_back(cell);
         }
     }
-    CCLOG("POSSIBLE STARS: %lu", _grid.size());
+    
 }
 
 void GameLayer::update(float dt)
@@ -348,7 +348,7 @@ void GameLayer::onTouchesBegan(const std::vector<Touch*>& touches, Event *unused
     // track if tapping on ship
     if (_rocket->getPosition().getDistance(tap) < _rocket->getRadius() * 1.2) {
         // clear lines
-        _lineContainer->setLineLength(LINE_NONE);
+        _lineContainer->setLineType(LINE_NONE);
         _rocket->setRotationOrientation(RotationOrientation::NONE);
         _drawing = true;
     }
@@ -429,7 +429,7 @@ void GameLayer::onTouchesEnded(const std::vector<Touch*>& touches, Event *unused
         
         Point clockwise = (_rocket->getPosition() - _rocket->getPivot()).getRPerp();
         float dot = clockwise.dot(_rocket->getVector());
-        CCLOG("%f", dot);
+        
         if (dot > 0) {
             _rocket->setAngularSpeed(_rocket->getAngularSpeed() * -1);
             _rocket->setRotationOrientation(RotationOrientation::CLOCKWIZE);

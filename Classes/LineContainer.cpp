@@ -51,7 +51,7 @@ void LineContainer::update(float delta)
 void LineContainer::draw(Renderer *renderer, const kmMat4 &transform, bool transformUpdated)
 {
     this->clear();
-    
+    CCLOG("%d", _lineType);
     // draw line
     switch (_lineType) {
         case LINE_NONE:
